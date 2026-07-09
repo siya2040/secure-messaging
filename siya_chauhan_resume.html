@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Siya Chauhan - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1e293b;
+      --color-secondary: #475569;
+      --color-accent: #0284c7;
+      --color-text: #0f172a;
+      --color-bg: #ffffff;
+      --color-line: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.35;
+      font-size: 13px;
+      padding: 30px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .contact-info {
+      font-size: 11.5px;
+      color: var(--color-secondary);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-info a {
+      color: var(--color-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    /* Section Styling */
+    section {
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 13.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--color-primary);
+      border-bottom: 1px solid var(--color-line);
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+    }
+
+    /* Common List & Layout Grid */
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .bold-title {
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 13px;
+    }
+
+    .italic-subtitle {
+      font-style: italic;
+      color: var(--color-secondary);
+      font-size: 12.5px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: var(--color-secondary);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .bullets {
+      list-style-type: disc;
+      margin-left: 16px;
+      margin-top: 2px;
+      margin-bottom: 4px;
+      color: var(--color-text);
+    }
+
+    .bullets li {
+      margin-bottom: 1.5px;
+      padding-left: 2px;
+    }
+
+    /* Education Specific */
+    .edu-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-top: 1px;
+      color: var(--color-secondary);
+    }
+
+    /* Skills Grid */
+    .skills-container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      row-gap: 3.5px;
+      column-gap: 12px;
+      margin-top: 2px;
+    }
+
+    .skill-category {
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 12.5px;
+      min-width: 170px;
+    }
+
+    .skill-list {
+      color: var(--color-text);
+      font-size: 12.5px;
+    }
+
+    /* Print media optimization to fit exactly on a single page */
+    @media print {
+      body {
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+        color: #000000;
+      }
+      header h1 {
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+      .bold-title {
+        font-size: 12px;
+      }
+      .italic-subtitle, .date, .edu-details, .skill-list, .skill-category {
+        font-size: 11.5px;
+      }
+      section {
+        margin-bottom: 10px;
+      }
+      .bullets {
+        margin-left: 14px;
+      }
+      .bullets li {
+        margin-bottom: 1px;
+      }
+      a {
+        text-decoration: none;
+        color: #000000;
+      }
+      @page {
+        size: A4;
+        margin: 10mm 12mm 10mm 12mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Siya Chauhan</h1>
+    <div class="contact-info">
+      <span>siyacauhan2040@gmail.com</span>
+      <span>|</span>
+      <span>7018881826</span>
+      <span>|</span>
+      <a href="https://github.com/siya2040" target="_blank">github.com/siya2040</a>
+      <span>|</span>
+      <a href="https://linkedin.com/in/siya-chauhan-168a80288" target="_blank">linkedin.com/in/siya-chauhan-168a80288/</a>
+    </div>
+  </header>
+
+  <!-- Education -->
+  <section>
+    <h2>Education</h2>
+    <div class="row">
+      <div class="bold-title">University of Petroleum and Energy Studies</div>
+      <div class="date">Aug 2023 – May 2027</div>
+    </div>
+    <div class="edu-details">
+      <span>B.Tech. in Computer Science & Engineering (Cybersecurity Specialization)</span>
+      <span>CGPA: 8.2/10.0</span>
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section>
+    <h2>Work Experience</h2>
+    
+    <div class="row">
+      <div class="title-group">
+        <span class="bold-title">Xebia</span>
+        <span class="italic-subtitle">— Software Development Intern</span>
+      </div>
+      <div class="date">June 2026 – Present</div>
+    </div>
+    <ul class="bullets">
+      <li>Collaborating with engineering teams to design and implement REST APIs using Spring Boot and Java.</li>
+      <li>Conducting vulnerability assessments on staging applications and debugging core security flaws (SQLi, XSS).</li>
+      <li>Writing automated unit tests with JUnit/Mockito to ensure software components conform to system specs.</li>
+    </ul>
+
+    <div class="row" style="margin-top: 4px;">
+      <div class="title-group">
+        <span class="bold-title">Ultimez Technologies</span>
+        <span class="italic-subtitle">— Web Development Intern</span>
+      </div>
+      <div class="date">May 2026 – Present</div>
+    </div>
+    <ul class="bullets">
+      <li>Developing responsive, user-centric front-end features for client web applications using React.js and CSS3.</li>
+      <li>Integrating RESTful endpoints with front-end modules, optimizing performance, and ensuring site responsiveness.</li>
+      <li>Participating in daily agile sprint standups and contributing to cross-functional feature planning.</li>
+    </ul>
+
+    <div class="row" style="margin-top: 4px;">
+      <div class="title-group">
+        <span class="bold-title">Himrus Natural</span>
+        <span class="italic-subtitle">— Digital Content Intern</span>
+      </div>
+      <div class="date">May 2025 – Jul 2025</div>
+    </div>
+    <ul class="bullets">
+      <li>Designed and created digital marketing assets for brand development and product launches.</li>
+      <li>Conducted user behavior market research to enhance digital marketing campaign targeting and analytics.</li>
+    </ul>
+
+    <div class="row" style="margin-top: 4px;">
+      <div class="title-group">
+        <span class="bold-title">Nada India Foundation</span>
+        <span class="italic-subtitle">— Social Outreach Intern</span>
+      </div>
+      <div class="date">May 2024 – Aug 2024</div>
+    </div>
+    <ul class="bullets">
+      <li>Coordinated health awareness campaigns across schools; supported Tobacco-Free Campus initiatives in Shimla.</li>
+      <li>Analyzed survey data to measure social campaign outreach metrics and drafted progress reports.</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2>Projects</h2>
+
+    <div class="row">
+      <div class="title-group">
+        <span class="bold-title">Secure Messaging Web Application</span>
+        <span class="italic-subtitle">| Spring Boot, MySQL, Java JCE, Vanilla JS</span>
+      </div>
+      <div class="date">2026</div>
+    </div>
+    <ul class="bullets">
+      <li>Developed a real-time messaging application supporting private chat, group rooms, and image sharing.</li>
+      <li>Designed and implemented a custom **UDP broadcast-based LAN Discovery Service** on port `47777` that broadcasts beacons and automatically resolves local subnet interfaces, enabling offline server access.</li>
+      <li>Built a stateless security layer with JWT authentication, custom security filter chains, and BCrypt credential hashing.</li>
+      <li>Configured environment-based property files to prevent the leak of database and SMTP email configurations.</li>
+    </ul>
+
+    <div class="row" style="margin-top: 4px;">
+      <div class="title-group">
+        <span class="bold-title">CyberEscapeRoom</span>
+        <span class="italic-subtitle">| Spring Boot, Java, Cybersecurity</span>
+      </div>
+      <div class="date">2025</div>
+    </div>
+    <ul class="bullets">
+      <li>Designed and developed a 12-level interactive gamified environment simulating cybersecurity vulnerabilities.</li>
+      <li>Built sandboxed levels mimicking SQL Injection, XSS, and broken Role-Based Access Control (RBAC) scenarios.</li>
+      <li>Implemented custom authentication and role access rules for controlled, secure level progression.</li>
+    </ul>
+
+    <div class="row" style="margin-top: 4px;">
+      <div class="title-group">
+        <span class="bold-title">Disaster Monitoring Platform</span>
+        <span class="italic-subtitle">| React, NASA API, HTML5, CSS3</span>
+      </div>
+      <div class="date">2024</div>
+    </div>
+    <ul class="bullets">
+      <li>Created a responsive React application displaying global natural disaster indicators in real time.</li>
+      <li>Integrated NASA EONET public API to fetch, parse, and map active global disaster occurrences.</li>
+    </ul>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category">Programming Languages:</div>
+      <div class="skill-list">Java, Python, JavaScript (ES6+), SQL, HTML5, CSS3</div>
+
+      <div class="skill-category">Frameworks & Libraries:</div>
+      <div class="skill-list">Spring Boot, Spring Security, Hibernate (JPA), React.js</div>
+
+      <div class="skill-category">Databases & Developer Tools:</div>
+      <div class="skill-list">MySQL, H2 Database, Git, GitHub, Maven, Postman</div>
+
+      <div class="skill-category">Cybersecurity:</div>
+      <div class="skill-list">Vulnerability Analysis, SQL Injection & XSS Mitigations, Cryptography (AES, HMAC, DH)</div>
+
+      <div class="skill-category">Soft Skills:</div>
+      <div class="skill-list">Collaboration, Coordination, Communication, Leadership, Analytical Thinking</div>
+    </div>
+  </section>
+
+  <!-- Positions of Responsibility -->
+  <section>
+    <h2>Positions of Responsibility</h2>
+    <div class="row">
+      <div class="title-group">
+        <span class="bold-title">Executive Board Member</span>
+        <span class="italic-subtitle">— NAPSWII</span>
+      </div>
+      <div class="date">Jul 2024 – Present</div>
+    </div>
+    <ul class="bullets">
+      <li>Supported the coordination of educational policy awareness events and campus-wide initiatives.</li>
+    </ul>
+
+    <div class="row" style="margin-top: 3px;">
+      <div class="title-group">
+        <span class="bold-title">Core Member — Editorial Team</span>
+        <span class="italic-subtitle">— UPES</span>
+      </div>
+      <div class="date">Jun 2024 – Feb 2025</div>
+    </div>
+    <ul class="bullets">
+      <li>Co-managed university newsletter publications and coordinated student editorial workflows.</li>
+    </ul>
+  </section>
+
+  <!-- Achievements -->
+  <section>
+    <h2>Achievements & Extracurriculars</h2>
+    <ul class="bullets" style="margin-left: 16px;">
+      <li>**Hackathon 4.0 Participant (UPES-CSA, 2024)**: Competed in the cloud security alliance coding hackathon.</li>
+      <li>**Published Blogger (2024)**: Authored youth awareness articles advocating health and wellness.</li>
+    </ul>
+  </section>
+
+</body>
+</html>
