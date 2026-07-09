@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>SecureChat — LAN Mode</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="chat-page">
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <span class="topbar-title">SecureChat</span>
+      <span class="topbar-badge lan-mode-badge">&#128225; LAN Mode</span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-user">
+        <div class="avatar" id="lanAvatarEl"></div>
+        <span id="lanUsername" class="topbar-username"></span>
+      </div>
+      <button id="btnSwitchMode" class="btn-switch-mode" title="Switch to Online Mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        Online Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="chat-layout">
+
+    <!-- Sidebar -->
+    <aside class="chat-sidebar">
+
+      <!-- LAN Identity -->
+      <div class="lan-identity-box">
+        <div class="lan-identity-avatar" id="lanIdentityAvatar"></div>
+        <div class="lan-identity-info">
+          <div class="lan-identity-name" id="lanIdentityName"></div>
+          <div class="lan-identity-status">
+            <span class="lan-dot lan-dot-online"></span>
+            LAN Active
+          </div>
+        </div>
+        <button class="btn-edit-identity" id="btnEditIdentity" title="Change name">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Server URL -->
+      <div class="lan-server-box" id="lanServerBox">
+        <div class="lan-server-label">This device's URL</div>
+        <div class="lan-server-url" id="lanServerUrl">Detecting…</div>
+        <button class="btn-copy-lan" id="btnCopyServerUrl" title="Copy URL">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Nearby Users -->
+      <div class="sidebar-section" style="flex:1">
+        <div class="sidebar-section-header">
+          <span>&#128101; Nearby Users</span>
+          <button class="btn-new-dm" id="btnRefreshPeers" title="Refresh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+            </svg>
+          </button>
+        </div>
+        <div id="peerList" class="conv-list">
+          <div class="lan-scanning">
+            <div class="lan-scan-spinner"></div>
+            <span>Scanning for nearby users…</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manual Connect -->
+      <div class="lan-manual-connect">
+        <div class="sidebar-section-header" style="padding-top:8px">
+          <span>Manual Connect</span>
+        </div>
+        <div class="lan-manual-row">
+          <input id="manualIpInput" type="text" placeholder="192.168.x.x:8080"
+                 autocomplete="off" spellcheck="false" />
+          <button id="btnManualConnect" class="btn-manual-connect">Go</button>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Chat Main -->
+    <main class="chat-main">
+
+      <!-- Empty state -->
+      <div id="lanEmptyState" class="empty-state">
+        <div class="empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+            <line x1="12" y1="20" x2="12.01" y2="20"/>
+          </svg>
+        </div>
+        <h3>LAN Mode Active</h3>
+        <p>Nearby users on the same Wi-Fi will appear in the sidebar. Click a user to start a secure chat.</p>
+        <div class="lan-empty-info">
+          <div class="lan-empty-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            All messages encrypted with AES-128 CBC
+          </div>
+          <div class="lan-empty-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Share your URL with others to let them connect
+          </div>
+        </div>
+      </div>
+
+      <!-- Active LAN chat -->
+      <div id="lanActiveChat" class="active-chat sc-hidden">
+        <div class="chat-header">
+          <div class="chat-header-avatar" id="lanChatAvatar"></div>
+          <div class="chat-header-info">
+            <span class="chat-header-name" id="lanChatName"></span>
+            <span class="chat-header-sub">
+              <span style="color:#22c55e">&#9679;</span> LAN · AES-128 CBC encrypted
+            </span>
+          </div>
+          <div class="chat-header-actions">
+            <span class="enc-badge">&#128274; LAN</span>
+          </div>
+        </div>
+
+        <div class="messages-area" id="lanMessagesArea"></div>
+
+        <div class="message-composer">
+          <input id="lanMessageInput" type="text" placeholder="Type a message…" autocomplete="off" />
+          <button id="lanSendBtn" class="btn-send" aria-label="Send">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Set Identity Modal -->
+  <div id="modalLanIdentity" class="modal-overlay sc-hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>&#128100; Your LAN Identity</h3>
+        <button class="modal-close" data-close="modalLanIdentity">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <label for="lanNameInput">Display Name</label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input id="lanNameInput" type="text" placeholder="Enter your name" autocapitalize="words" />
+          </div>
+          <span class="field-error" id="lanNameErr"></span>
+        </div>
+        <p style="font-size:0.82rem;color:var(--gray-500);margin-top:-8px">
+          This name is visible to other users on the same Wi-Fi network.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-cancel" data-close="modalLanIdentity">Cancel</button>
+        <button class="btn-modal-ok" id="btnSaveLanName">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="lan.js"></script>
+</body>
+</html>

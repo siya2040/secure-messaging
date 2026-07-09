@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>SecureChat — Choose Mode</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="mode-page">
+
+  <div class="mode-wrapper">
+
+    <!-- Brand -->
+    <div class="mode-brand">
+      <div class="mode-brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h1 class="mode-brand-name">SecureChat</h1>
+      <p class="mode-brand-sub">End-to-end encrypted messaging</p>
+    </div>
+
+    <!-- Heading -->
+    <div class="mode-heading">
+      <h2>How do you want to connect?</h2>
+      <p>Choose your communication mode to get started</p>
+    </div>
+
+    <!-- Mode Cards -->
+    <div class="mode-cards">
+
+      <!-- Online Mode -->
+      <button class="mode-card" id="btnOnline" data-mode="online">
+        <div class="mode-card-icon mode-card-icon-online">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <div class="mode-card-body">
+          <div class="mode-card-title">
+            <span class="mode-card-emoji">&#127760;</span>
+            Online Network Mode
+          </div>
+          <p class="mode-card-desc">Connect via internet to the secure cloud server. Full messaging, group chats, image sharing and account management.</p>
+          <ul class="mode-card-features">
+            <li>&#10003; Internet messaging</li>
+            <li>&#10003; Account login &amp; signup</li>
+            <li>&#10003; Group chats</li>
+            <li>&#10003; Secure image sharing</li>
+            <li>&#10003; MySQL database sync</li>
+          </ul>
+        </div>
+        <div class="mode-card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- LAN Mode -->
+      <button class="mode-card" id="btnLan" data-mode="lan">
+        <div class="mode-card-icon mode-card-icon-lan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+            <line x1="12" y1="20" x2="12.01" y2="20"/>
+          </svg>
+        </div>
+        <div class="mode-card-body">
+          <div class="mode-card-title">
+            <span class="mode-card-emoji">&#128225;</span>
+            Offline LAN Mode
+          </div>
+          <p class="mode-card-desc">Communicate directly with nearby devices on the same Wi-Fi network. No internet required — fully offline and secure.</p>
+          <ul class="mode-card-features">
+            <li>&#10003; Same Wi-Fi messaging</li>
+            <li>&#10003; No internet required</li>
+            <li>&#10003; Auto device discovery</li>
+            <li>&#10003; Local identity</li>
+            <li>&#10003; AES encrypted locally</li>
+          </ul>
+        </div>
+        <div class="mode-card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+      </button>
+
+    </div><!-- /mode-cards -->
+
+    <!-- Security note -->
+    <div class="mode-security">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      All communications are protected with AES-128 CBC · HMAC-SHA256 · Diffie-Hellman
+    </div>
+
+  </div><!-- /mode-wrapper -->
+
+  <script>
+    const savedMode = localStorage.getItem('sc_mode');
+    const token     = localStorage.getItem('sc_token');
+
+    // Auto-redirect only when BOTH token AND mode are already set.
+    // Switch Mode clears sc_mode before navigating here, so this
+    // will NOT fire after Switch Mode — the user sees the selection screen.
+    if (token && (savedMode === 'online' || savedMode === 'lan')) {
+      window.location.replace('chat.html');
+    }
+
+    document.getElementById('btnOnline').addEventListener('click', () => {
+      localStorage.setItem('sc_mode', 'online');
+      if (token) {
+        window.location.href = 'chat.html';
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    document.getElementById('btnLan').addEventListener('click', () => {
+      if (!token) {
+        localStorage.setItem('sc_mode', 'lan'); // remember intent
+        window.location.href = 'index.html';
+        return;
+      }
+      localStorage.setItem('sc_mode', 'lan');
+      window.location.href = 'chat.html';
+    });
+  </script>
+</body>
+</html>
