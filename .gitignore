@@ -45,3 +45,6 @@ src/main/resources/*.keystore
 
 # Production config overrides
 application-prod-local.properties
+
+# Resumes
+*resume.html
