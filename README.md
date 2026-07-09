@@ -105,10 +105,10 @@ The application will start on port `8080` (HTTP) or `8443` (HTTPS in production)
 
 ## Project Contributors
 
-*   **Vishesh Duggal** (Roll No. R2142230889)
-*   **Siya Chauhan** (Roll No. R2142230927)
-*   **Mudit Singh Bora** (Roll No. R2142231814)
-*   **Ishu Thakur** (Roll No. R2142230108)
+*   **Vishesh Duggal**
+*   **Siya Chauhan**
+*   **Mudit Singh Bora**
+*   **Ishu Thakur**
 
 **Under the Guidance of**:
 *   **Prof. N Prasanthi Kumari**
